@@ -10,38 +10,21 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class WebDriverManagerTest {
     @Test
-    void searchesInGoogle() {
-        // Initialize WebDriverManager for Chrome browser
+    void test1() {
         WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-
-        // Go to page
-        driver.get("https://www.google.com/");
-
-        // Find Search TextBox WebElement
-        WebElement searchBox = driver.findElement(By.id("APjFqb"));
-
-        // Fill TextBox
-        searchBox.sendKeys("qa-academy");
-
-        // Find Search Button
-        WebElement searchButton = driver.findElement(By.name("btnK"));
-
-        // Avoid this sleep - bad code.
+        WebDriver d = new ChromeDriver();
+        d.get("https://www.google.com/");
+        WebElement sb = d.findElement(By.id("APjFqb"));
+        sb.sendKeys("qa-academy");
+        WebElement sb1 = d.findElement(By.name("btnK"));
         try {
-            Thread.sleep(5000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
         }
-
-        // Click Search Button
-        searchButton.click();
-
-        // Assertions
-        WebElement qaAcademyLink = driver.findElement(By.xpath("//h3[text()='QA Training']"));
-        Assertions.assertEquals("QA Training", qaAcademyLink.getText());
-
-        // Close the browser
-        driver.quit();
+        sb1.click();
+        WebElement qaL = d.findElement(By.xpath("//h3[text()='QA Training']"));
+        Assertions.assertEquals("QA Training", qaL.getText());
+        d.quit();
     }
 }

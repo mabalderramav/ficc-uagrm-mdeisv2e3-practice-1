@@ -1,7 +1,7 @@
 package bo.edu.uagrm.soe.cleancode;
 
 import bo.edu.uagrm.soe.webdrivers.WebDriverManager;
-import bo.edu.uagrm.soe.webdrivers.WebDriverTypes;
+import bo.edu.uagrm.soe.browsers.BrowserWebDriverTypes;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -23,8 +23,8 @@ public class WebDriverManagerTest {
     @ParameterizedTest
     @DisplayName("Searches in Google")
     @Tag("UnitTest")
-    @EnumSource(WebDriverTypes.class)
-    void searchesInGoogle(WebDriverTypes webDriverType) {
+    @EnumSource(BrowserWebDriverTypes.class)
+    void searchesInGoogle(BrowserWebDriverTypes webDriverType) {
         webDriverManager = WebDriverManager.getInstance(webDriverType);
 
         // Go to page

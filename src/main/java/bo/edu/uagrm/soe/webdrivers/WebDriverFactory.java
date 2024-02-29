@@ -1,6 +1,7 @@
 package bo.edu.uagrm.soe.webdrivers;
 
 import bo.edu.uagrm.soe.browsers.Browser;
+import bo.edu.uagrm.soe.browsers.BrowserWebDriverTypes;
 import bo.edu.uagrm.soe.browsers.Chrome;
 import bo.edu.uagrm.soe.browsers.ChromeDocker;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -23,7 +24,7 @@ public final class WebDriverFactory {
      * @param type Driver Type enum value.
      * @return Web Driver instance.
      */
-    public static WebDriverManager getWebDriverManager(final WebDriverTypes type) {
+    public static WebDriverManager getWebDriverManager(final BrowserWebDriverTypes type) {
         Browser<WebDriverManager> browser = getStrategyBrowser().get(type).performStep();
         return browser.getDriver();
     }
@@ -33,10 +34,10 @@ public final class WebDriverFactory {
      *
      * @return browser map.
      */
-    private static EnumMap<WebDriverTypes, StrategyGetter<Browser<WebDriverManager>>> getStrategyBrowser() {
-        EnumMap<WebDriverTypes, StrategyGetter<Browser<WebDriverManager>>> driverMap = new EnumMap<>(WebDriverTypes.class);
-        driverMap.put(WebDriverTypes.CHROME, Chrome::new);
-        driverMap.put(WebDriverTypes.CHROME_DOCKER, ChromeDocker::new);
+    private static EnumMap<BrowserWebDriverTypes, StrategyGetter<Browser<WebDriverManager>>> getStrategyBrowser() {
+        EnumMap<BrowserWebDriverTypes, StrategyGetter<Browser<WebDriverManager>>> driverMap = new EnumMap<>(BrowserWebDriverTypes.class);
+        driverMap.put(BrowserWebDriverTypes.CHROME, Chrome::new);
+        driverMap.put(BrowserWebDriverTypes.CHROME_DOCKER, ChromeDocker::new);
         return driverMap;
     }
 }

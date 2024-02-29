@@ -1,9 +1,9 @@
-package bo.edu.uagrm.soe.webdrivers;
+package bo.edu.uagrm.soe.browsers;
 
 /**
  * Driver types enum.
  */
-public enum WebDriverTypes {
+public enum BrowserWebDriverTypes {
     CHROME("CHROME"),
     CHROME_DOCKER("CHROME_DOCKER");
 
@@ -14,7 +14,7 @@ public enum WebDriverTypes {
      *
      * @param word original word.
      */
-    WebDriverTypes(final String word) {
+    BrowserWebDriverTypes(final String word) {
         this.word = word;
     }
 

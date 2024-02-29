@@ -1,5 +1,6 @@
 package bo.edu.uagrm.soe.webdrivers;
 
+import bo.edu.uagrm.soe.browsers.BrowserWebDriverTypes;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,7 +17,7 @@ public final class WebDriverManager {
     /**
      * Initializes an instance of {@link WebDriverManager}.
      */
-    private WebDriverManager(WebDriverTypes webDriverType) {
+    private WebDriverManager(BrowserWebDriverTypes webDriverType) {
         initializeDriver(webDriverType);
     }
 
@@ -25,7 +26,7 @@ public final class WebDriverManager {
      *
      * @return singleton instance.
      */
-    public static WebDriverManager getInstance(WebDriverTypes webDriverType) {
+    public static WebDriverManager getInstance(BrowserWebDriverTypes webDriverType) {
         if (Objects.isNull(instance)) {
             instance = new WebDriverManager(webDriverType);
         }
@@ -35,7 +36,7 @@ public final class WebDriverManager {
     /**
      * Initializes the Web Driver instance.
      */
-    private void initializeDriver(WebDriverTypes webDriverType) {
+    private void initializeDriver(BrowserWebDriverTypes webDriverType) {
         webDriverManager = WebDriverFactory.getWebDriverManager(webDriverType);
         webDriver = webDriverManager.getWebDriver();
         webDriver.manage().window().setSize(new Dimension(1920, 1200));
